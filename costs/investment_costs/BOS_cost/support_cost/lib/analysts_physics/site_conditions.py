@@ -45,7 +45,7 @@ class SiteConditionsAnalysts:
                                                self.wave_limit(self.site_conditions.kmax_1_year))
         self.site_conditions.max_crest = self.site_conditions.hat + self.site_conditions.storm_surge_pos + 0.55 * self.site_conditions.Hmax_50_year
         self.site_conditions.min_crest = self.site_conditions.lat + self.site_conditions.storm_surge_pos - 0.45 * self.site_conditions.Hmax_50_year
-        self.site_conditions.Vreference = self.site_conditions.Vaverage * 5
+        self.site_conditions.Vreference = self.site_conditions.Vaverage * 5.0
         self.site_conditions.Vmax_50_year = 1.2 * self.site_conditions.Vreference
         self.site_conditions.Vred_50_year = (1.2 / 1.1) * self.site_conditions.Vreference
         # print self.site_conditions.water_depth
