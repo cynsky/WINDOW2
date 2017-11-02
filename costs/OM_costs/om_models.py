@@ -1,6 +1,7 @@
 from costs.currency import Cost1
 from farm_description import OandM_costs, availability
 
+
 def oandm(aep, aeroloads, hydroloads, layout):
     costs_om = 16.0 * aep / 1000000.0
     avail = 0.98

@@ -1,9 +1,10 @@
-central_platform = [[1000.0, 1000.0]]  # List with coordinates of electrical substations.
+central_platform = [[1000.0, 1000.0], [500, 500]]  # List with coordinates of electrical substations.
 number_turbines_per_cable = [3]  # Maximum number of turbines connected per collection line.
 NT = 9  # Number of turbines in wind farm.
 cable_installation_cost = 365.0  # Cost of cable installation per metre.
 availability = 0.98  # Percentage of time when the farm is operational.
 OandM_costs = 20000000.0  # Yearly Operationd and Maintenance total costs [Euro].
+
 
 class Cost1:
     def __init__(self, value, currency, year):
@@ -50,7 +51,7 @@ Hs_50_year = 5.0  # Horns Rev website: Highest value in graph of Hm0 is 4.3. Som
 Hs_1_year = 3.3  # Horns Rev website: waves of more than 6 m height reached every year. Divided by 1.86 to
 # estimate significant wave height
 current_depth_averaged_50_year = 0.8  # [m/s] Horns Rev website: Currents may reach 0.8 m/s during storms
-# (doesn't mention return period and whether this is depth averaged)
+# (doesn't mention return period and whether this is depth averaged)[k
 angle_wave_current_50_year = 20.0  # [degrees] (Arbitrary default)
 water_temperature = 15.0  # [degrees Celsius] 'Temperature-report' gives 17 degrees surface temp in August
 #  and 'Temperature variation-report' gives variation of 2 degrees (highest temperature, so: August, is the worst case)
@@ -60,7 +61,7 @@ d50_soil = 0.0002  # [m]  Values given as 'range' in baggrund8 IEA report and co
 d90_soil = 0.0005  # [m]  Values given as 'range' in baggrund8 IEA report and confirmed by figure 2.2.
 # in fish IEA report
 friction_angle = 35.0  # [degrees] Depth averaged friction angle from 'friction angle-report'
-submerged_unit_weight = 10000.0  # [N/m^3] From 'friction angle-report', lighter layer ignored, because
+submerged_unit_weight = 10000.0  # [N/m^2] From 'friction angle-report', lighter layer ignored, because
 # it is at great depth.
 
 V_rated_voltage = [22000, 33000, 45000, 66000, 132000, 220000]  # Rated voltage in V # User's option

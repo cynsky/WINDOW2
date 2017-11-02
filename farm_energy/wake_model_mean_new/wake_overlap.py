@@ -25,7 +25,7 @@ def maximum(array_deficits):
     return max(array_deficits)
 
 if __name__ == '__main__':
-    deficits = [0.3, 0.4]
+    deficits = [0.3, 0.4, 0.5, 0.8]
     print root_sum_square(deficits)
     print multiplied(deficits)
     print summed(deficits)

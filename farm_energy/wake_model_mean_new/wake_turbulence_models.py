@@ -1,6 +1,6 @@
 from math import sqrt
-from memoize import Memoize
-from turbine_description import rotor_radius
+# from memoize import Memoize
+# from turbine_description import rotor_radius
 #  Change in Fatigue and Extreme Loading when Moving Wind Farms Offshore // Sten Frandsen and Kenneth Thomsen.
 #  Only nearest wake-shedding turbine matters in a wind farm.
 
@@ -9,7 +9,7 @@ def frandsen2(ambient_turbulence, Ct, wind_speed, spacing):
     return sqrt(1.2 * Ct / spacing ** 2.0 + ambient_turbulence ** 2.0)
 
 
-frandsen2 = Memoize(frandsen2)
+# frandsen2 = Memoize(frandsen2)
 
 
 def danish_recommendation(ambient_turbulence, ct, wind_speed, spacing):
@@ -47,7 +47,7 @@ def danish_recommendation(ambient_turbulence, ct, wind_speed, spacing):
     return Id
 
 
-danish_recommendation = Memoize(danish_recommendation)
+# danish_recommendation = Memoize(danish_recommendation)
 
 
 def larsen_turbulence(ambient_turbulence, Ct, speed, spacing):
@@ -61,7 +61,7 @@ def larsen_turbulence(ambient_turbulence, Ct, speed, spacing):
     return Id
 
 
-larsen_turbulence = Memoize(larsen_turbulence)
+# larsen_turbulence = Memoize(larsen_turbulence)
 
 
 def frandsen(ambient_turbulence, Ct, speed, spacing, large=False):
@@ -86,18 +86,18 @@ def frandsen(ambient_turbulence, Ct, speed, spacing, large=False):
     return It
 
 
-frandsen = Memoize(frandsen)
+# frandsen = Memoize(frandsen)
 
 
 def Quarton(ambient_turb_percentage, Ct, speed, x, tsr=7.6):
     # TODO
-    D = rotor_radius * 2.0
+    D = 40.0 * 2.0
     x *= D
     Ia = ambient_turb_percentage
-    K1 = 4.8
+    K1 = 5.7#4.8
     a1 = 0.7
     a2 = 0.68
-    a3 = - 0.57
+    a3 = -0.96#- 0.57
     m = 1.0 / (1.0 - Ct) ** 0.5
     r0 = D / 2.0 * ((m + 1.0) / 2.0) ** 0.5
 
@@ -119,7 +119,7 @@ def Quarton(ambient_turb_percentage, Ct, speed, x, tsr=7.6):
     return sqrt(Iw ** 2.0 + Ia ** 2.0)
 
 
-Quarton = Memoize(Quarton)
+# Quarton = Memoize(Quarton)
 
 #  ONLY to be used with the Ainslie Eddy Viscosity model. Use Eddy Viscosity term from the Ainslie model (E)
 # def Lange(eddy_viscosity, free_flow_wind_speed, hub_height, wake_radius, karman=0.41):
@@ -144,7 +144,7 @@ if __name__ == "__main__":
     with open('turb_downstream_d.dat', 'w') as out:
         for x in range(100):
             d = float(x) * 0.1 + 0.1
-            out.write('{0}\t{1}\t{2}\t{3}\t{4}\t{5}\n'.format(d, danish_recommendation(0.11, ct, 8.28, d), larsen_turbulence(0.11, ct, 8.28, d), Quarton(0.11, ct, 8.28, d), frandsen(0.11, ct, 8.28, d), frandsen2(0.11, ct, 8.28, d)))
+            out.write('{}\t{}\t{}\t{}\t{}\t{}\n'.format(d, danish_recommendation(0.11, ct, 8.28, d), larsen_turbulence(0.11, ct, 8.28, d), Quarton(0.11, ct, 8.28, d), frandsen(0.11, ct, 8.28, d), frandsen2(0.11, ct, 8.28, d)))
 
     # print danish_recommendation(0.08, 8.5, 7.0)
     # print Larsen_turbulence(0.08, 7.0, 0.79)

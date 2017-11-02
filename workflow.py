@@ -127,6 +127,7 @@ class Workflow:
         if self.cable_topology_model != "ConstantCable":
             self.cable_topology_costs, self.cable_topology, self.infield_length = self.cable_topology_model(
                 turbine_coordinates)
+        print self.cable_topology
         if self.cable_topology_model == "ConstantCable":
             self.cable_topology_costs = 9960476.0
             self.infield_length = 15276.0

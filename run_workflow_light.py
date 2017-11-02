@@ -28,7 +28,6 @@ from farm_energy.wake_model_mean_new.downstream_effects import JensenEffects as 
 from farm_energy.wake_model_mean_new.wake_overlap import root_sum_square, maximum, multiplied, summed
 from farm_energy.wake_model_mean_new.aero_power_ct_models.aero_models import power, thrust_coefficient, power2, \
     thrust_coefficient2
-from time import time
 
 wakemodels = [constantwake, Jensen, Larsen, Ainslie1D, Ainslie2D]  # a - 1
 windrosemodels = ["windrose.dat"]  # b - 2
@@ -53,15 +52,15 @@ def run_workflow(a, b, c, d, e, f, g, h, i, j):
     workflow1.windrose.nbins = nbins
     workflow1.windrose.artificial_angle = artif_angle
     workflow1.windrose.real_angle = real_angle
-    workflow1.print_output = False
-    start1 = time()
+    workflow1.print_output = True
     workflow1.run("layout.dat")
-    print time() - start1, "seconds runtime"
+    print workflow1.runtime, "seconds runtime"
     power2.reset()
     thrust_coefficient2.reset()
 
     with open("output.dat", "a", 1) as output2:
         output2.write("{}\t{}\t{}\n".format(workflow1.aep, workflow1.finance, workflow1.runtime))
+
 
 if __name__ == '__main__':
     run_workflow(1, 0, 5, 1, 0, 1, 1, 3, 1, 1)
