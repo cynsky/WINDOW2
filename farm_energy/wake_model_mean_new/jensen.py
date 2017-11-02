@@ -55,6 +55,8 @@ def wake_radius(x, r0=rotor_radius, k=jensen_k):
 wake_radius = Memoize(wake_radius)
 
 if __name__ == '__main__':
+    # wake_deficit(0.79, 320.0, 0.04, 40.0)
+    # print determine_if_in_wake(0, 0, 500, 0, 150.0, 64.0)
 
     def speed(deficit):
         return 8.5 * (1.0 - deficit)
